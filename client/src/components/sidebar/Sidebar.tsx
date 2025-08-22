@@ -66,7 +66,7 @@ export default function Sidebar({
         title: 'New Conversation',
         model: 'gpt-4o',
       });
-      return response as Conversation;
+      return await response.json();
     },
     onSuccess: (newConversation: Conversation) => {
       queryClient.invalidateQueries({ queryKey: ['/api/conversations'] });

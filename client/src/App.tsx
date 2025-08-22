@@ -12,15 +12,20 @@ import Home from "@/pages/Home";
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
 
+  // Show landing page when loading or not authenticated
+  if (isLoading || !isAuthenticated) {
+    return (
+      <Switch>
+        <Route path="/" component={Landing} />
+        <Route component={Landing} />
+      </Switch>
+    );
+  }
+
+  // Show home page when authenticated
   return (
     <Switch>
-      {isLoading || !isAuthenticated ? (
-        <Route path="/" component={Landing} />
-      ) : (
-        <>
-          <Route path="/" component={Home} />
-        </>
-      )}
+      <Route path="/" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );

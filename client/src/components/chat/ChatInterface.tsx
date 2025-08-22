@@ -63,7 +63,8 @@ export default function ChatInterface({ conversationId, onConversationChange }: 
       if (!conversationId) {
         throw new Error('No conversation selected');
       }
-      return await apiRequest('POST', `/api/conversations/${conversationId}/messages`, { content });
+      const response = await apiRequest('POST', `/api/conversations/${conversationId}/messages`, { content });
+      return await response.json();
     },
     onSuccess: () => {
       // Invalidate and refetch conversation data
