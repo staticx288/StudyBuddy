@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme colors */
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 25%, 7.8431%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 25%, 7.8431%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 25%, 7.8431%);
+  --primary: hsl(210, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 40%, 98%);
+  --secondary-foreground: hsl(210, 25%, 7.8431%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(210, 4%, 46%);
+  --accent: hsl(210, 40%, 94%);
+  --accent-foreground: hsl(210, 25%, 7.8431%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --ring: hsl(210, 100%, 50%);
+  --chart-1: hsl(210, 100%, 50%);
+  --chart-2: hsl(160, 100%, 36%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar-background: hsl(0, 0%, 98%);
+  --sidebar-foreground: hsl(210, 25%, 7.8431%);
+  --sidebar-primary: hsl(210, 100%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(210, 40%, 94%);
+  --sidebar-accent-foreground: hsl(210, 25%, 7.8431%);
+  --sidebar-border: hsl(214, 32%, 91%);
+  --sidebar-ring: hsl(210, 100%, 50%);
+  
+  /* Dark theme specific colors */
+  --dark-primary: hsl(210, 11%, 10%);
+  --dark-secondary: hsl(210, 11%, 17%);
+  --dark-accent: hsl(210, 11%, 25%);
+  
+  /* Font families */
+  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+  
+  /* Animations */
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Dark theme colors */
+  --background: hsl(210, 11%, 10%);
+  --foreground: hsl(210, 11%, 85%);
+  --card: hsl(210, 11%, 15%);
+  --card-foreground: hsl(210, 11%, 85%);
+  --popover: hsl(210, 11%, 10%);
+  --popover-foreground: hsl(210, 11%, 85%);
+  --primary: hsl(210, 100%, 56%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 11%, 17%);
+  --secondary-foreground: hsl(210, 11%, 85%);
+  --muted: hsl(210, 11%, 15%);
+  --muted-foreground: hsl(210, 5%, 46%);
+  --accent: hsl(210, 11%, 17%);
+  --accent-foreground: hsl(210, 11%, 85%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 11%, 20%);
+  --input: hsl(210, 11%, 20%);
+  --ring: hsl(210, 100%, 56%);
+  --chart-1: hsl(210, 100%, 56%);
+  --chart-2: hsl(160, 100%, 36%);
+  --chart-3: hsl(42, 93%, 56%);
+  --chart-4: hsl(147, 78%, 42%);
+  --chart-5: hsl(341, 75%, 51%);
+  --sidebar-background: hsl(210, 11%, 15%);
+  --sidebar-foreground: hsl(210, 11%, 85%);
+  --sidebar-primary: hsl(210, 100%, 56%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(210, 11%, 17%);
+  --sidebar-accent-foreground: hsl(210, 11%, 85%);
+  --sidebar-border: hsl(210, 11%, 20%);
+  --sidebar-ring: hsl(210, 100%, 56%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  /* Custom animations for typing indicator */
+  .animate-pulse-typing {
+    animation: pulseTyping 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes pulseTyping {
+    0%, 100% { 
+      opacity: 0.4; 
+    }
+    50% { 
+      opacity: 1; 
+    }
+  }
+  
+  /* Smooth slide animations */
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    0% { 
+      transform: translateY(10px); 
+      opacity: 0; 
+    }
+    100% { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+  
+  /* Dark mode specific scrollbar */
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.2);
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+  }
+
+  /* Gradient text utilities */
+  .gradient-text-blue-purple {
+    background: linear-gradient(to right, hsl(210, 100%, 56%), hsl(250, 100%, 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom prose styles for message content */
+.prose {
+  color: hsl(var(--foreground));
+  max-width: none;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: hsl(var(--foreground));
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.prose p {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose code {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--muted));
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+.prose ul, .prose ol {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.prose blockquote {
+  border-left: 4px solid hsl(var(--border));
+  padding-left: 1rem;
+  margin: 1em 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Dark mode prose overrides */
+.dark .prose {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4, .dark .prose h5, .dark .prose h6 {
+  color: hsl(var(--foreground));
+}
+
+.dark .prose code {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--muted));
+}
+
+.dark .prose pre {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
